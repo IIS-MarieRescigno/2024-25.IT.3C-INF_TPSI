@@ -2,21 +2,16 @@
 
 // Funzione per simulare la porta NOT
 int NOT(int a) {
-    // Il valore di ritorno della funzione
     return 1 - a;
 }
 
 // Funzione per simulare la porta AND
 int AND(int a, int B) {
-    // Il valore di ritorno della funzione
-    // TODO aggiungere l'espressione matematica per soddisfare la porta AND
     return a * B;
 }
 
 // Funzione per simulare la porta OR
 int OR(int a, int B) {
-    // Il valore di ritorno della funzione
-    // TODO aggiungere l'espressione matematica per soddisfare la porta OR
     return (a + B) - (a * B);
 }
 
@@ -76,6 +71,20 @@ int main() {
         printf("I valori di A e B vengono trasformati da una porta OR\n");
         int orAB = OR(A, B);
         printf("Il valore di uscita della porta OR è: %d\n", orAB);
+
+        // Labirinto Tautologico
+        int r1 = OR(A, NOT(A)); // Sempre 1
+        int r2 = OR(B, NOT(B)); // Sempre 1
+        int r3 = OR(C, NOT(C)); // Sempre 1
+        int r4 = OR(D, NOT(D)); // Sempre 1
+        int r5 = OR(E, NOT(E)); // Sempre 1
+        int r6 = OR(F, NOT(F)); // Sempre 1
+
+        // Combiniamo tutti i risultati con AND (poiché tutti sono 1, l'AND sarà 1)
+     int risultato = AND(AND(r1, r2), AND(AND(r3, r4), AND(r5, r6)));
+
+        // Stampa del risultato
+     printf("\nRisultato finale: %d\n", risultato);
     }
 
     printf("\n\n");
